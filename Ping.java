@@ -33,18 +33,40 @@ public class Ping extends JFrame implements KeyListener {
     InetAddress inet;
 
     public Ping(){
+        
+        //setting the window proprietes
+        this.set_frame();
 
+        //setting the label
+        this.set_cmd_label();
+
+        //setting the textfield that receives the command from the user
+        this.set_text_field_cmd();
+
+        //setting the JList that shows the ping result 
+        this.set_ping_result();
+
+        this.getContentPane().revalidate();
+        this.getContentPane().repaint();
+    }
+
+    private void set_frame(){
         // this.setPreferredSize(new Dimension(900, 600));
         this.setSize(900, 600);
         this.setVisible(true);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.getContentPane().setBackground(Color.black);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
+    private void set_cmd_label(){
         cmd_label.setForeground(Color.green);
         cmd_label.setFont(cmd_font);
         // cmd_label.setPreferredSize(new Dimension(150, cmd.getHeight()));
+        this.getContentPane().add(cmd_label);
+    }
 
+    private void set_text_field_cmd(){
         cmd.setForeground(Color.white);
         cmd.setBackground(this.getContentPane().getBackground());
         cmd.setPreferredSize(cmd_line_dim);
@@ -52,24 +74,23 @@ public class Ping extends JFrame implements KeyListener {
         cmd.setCaretColor(Color.WHITE);
         cmd.addKeyListener(this);
 
+        this.getContentPane().add(cmd);
+    }
+
+    private void set_ping_result(){
         this.ping_result = new JList<>(pList);
         ping_result.setPreferredSize(new Dimension(this.getContentPane().getWidth() - 50, 200));
         ping_result.setBackground(this.getContentPane().getBackground());
         ping_result.setForeground(Color.white);
         ping_result.setFont(cmd_font);
         
+        // this.getContentPane().add(ping_result);
         scroll = new JScrollPane(ping_result);
         scroll.setPreferredSize(new Dimension(800, 500));
         scroll.setBackground(Color.BLACK);
         scroll.setForeground(Color.white);
 
-        this.getContentPane().add(cmd_label);
-        this.getContentPane().add(cmd);
-        // this.getContentPane().add(ping_result);
         this.getContentPane().add(scroll);
-
-        this.getContentPane().revalidate();
-        this.getContentPane().repaint();
     }
 
     @Override
@@ -79,8 +100,9 @@ public class Ping extends JFrame implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println("Key char" + e.getKeyCode());
+        System.out.println("Key char: " + e.getKeyCode());
 
+        //enter key: to send a command
         if(e.getKeyCode() == 10){
             String[] split_cmd;
 
@@ -132,6 +154,22 @@ public class Ping extends JFrame implements KeyListener {
             else {
                 pList.addElement(split_cmd[0] + ": command not found");
             }
+        }
+        //the arrow up key
+        else if(e.getKeyCode() == 38){
+
+        }
+        //arrow down key
+        else if (e.getKeyCode() == 40) {
+            
+        }
+        //arrow left key
+        else if (e.getKeyCode() == 37) {
+            
+        }
+        //arrow right key
+        else if (e.getKeyCode() == 39) {
+            
         }
     }
 

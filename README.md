@@ -4,7 +4,7 @@ This java project allow the user to ping some device on their network to see if 
 This is based on the ping command avaliable on the Windows, Linux and MacOS computers.
 
 ## Compilation
-To compile and run this program, first of all your need to have the JDK (Java Development Kit) just clone this repository and run the following commands:
+To compile and run this program, first of all your need to have the JDK (Java Development Kit) just clone this repository and run the following commands on your command line:
 To compile:
 ``` javac Ping.java ```
 ``` javac Main.java ```
